@@ -14,157 +14,139 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
        <style>
-    /* ... (Your existing fixed layout styles) ... */
+    /* 1. RESET & BASE STYLES */
+    body {
+        margin: 0;
+        padding: 0;
+        padding-top: 70px; /* Space for the navbar */
+        overflow-x: hidden;
+    }
 
-    /* === UPDATED: Aesthetic Paragraph Styling with Agency Font and Border === */
-    
-    h1{
+    /* 2. TEXT & TYPOGRAPHY */
+    h1 {
         color: white;
-         font-family: 'Agency FB', sans-serif; 
+        font-family: 'Agency FB', sans-serif;
+        /* Scales font between 1.8rem and 3.5rem based on screen size */
+        font-size: clamp(1.8rem, 5vw, 3.5rem); 
+        text-align: center;
     }
-    label{
+
+    label {
         color: darkblue;
-         font-family: 'Agency FB', sans-serif; 
+        font-family: 'Agency FB', sans-serif;
     }
 
-
-   h4 {
-    color: white;
-    font-family: 'Mistral', sans-serif; 
-    font-size: 1.2rem; 
-    line-height: 1.1;
-    font-weight: 200; 
-    direction: ltr; 
-    text-align: center;
-    margin-top: -25px;
-
+    h4 {
+        color: white;
+        font-family: 'Mistral', sans-serif;
+        font-size: clamp(1.2rem, 2.5vw, 2rem);
+        line-height: 1.1;
+        font-weight: 200;
+        direction: ltr;
+        text-align: center;
+        margin-top: -15px;
     }
 
-
-
-    .button {
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		-ms-appearance: none;
-		appearance: none;
-		-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		background-color: #ffffffdf;
-		border-radius: 6px;
-		border: 0;
-		color: #000000;
-		cursor: pointer;
-		display: inline-block;
-		font-weight: 400;
-		height: 3em;
-		line-height: 3em;
-		padding: 0 2em;
-		text-align: center;
-		text-decoration: none;
-		white-space: nowrap;
-	}
-        /* * === FIXED FULL-SCREEN LAYOUT STYLES === 
-         */
-
-        /* Video Background (Fixed and covers the entire viewport) */
-        #myVideo {
-            position: fixed; /* Locks the video to the screen */
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1; /* Pushes it behind all content */
-            object-fit: cover; 
-        }
-
-        /* Content Wrapper (Fixed, full-screen, and centered using Flexbox) */
-        .content-wrapper {
-            position: fixed; /* Locks the content layer to the screen */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Overlay for readability */
-            display: flex; /* Enables centering */
-            flex-direction: column;
-            justify-content: center; /* Vertically centers the content */
-            align-items: center; /* Horizontally centers the content */
-            overflow-y: auto; /* Allows content to scroll IF it exceeds 100% height */
-            padding-top: 40px; /* Default top padding */
-        }
-
-        /* * === COMPONENT STYLES === 
-         */
-        
-        /* Fixed Header Bar (Bootstrap class handles 'position: fixed') */
-        .navbar-custom {
-            padding-top: 0.5rem !important;
-            padding-bottom: 0.5rem !important; 
-        }
-
-        /* Image Sizing and Styling */
-        #myImage {
-            border: 1px solid #ddd;
-            border-radius: 2px;
-            padding: 5px;
-            
-            width: 15%;      
-            height: 50%; 
-            margin-bottom: 10px; 
-        }
-
-        #myImage:hover {
-            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-        }
-
-        
-       /* * === SMART DEVICE ALIGNMENT/MARGIN FIXES (max-width: 600px) === 
- */
-@media (max-width: 600px) {
-    
-    #myImage {
-        width: 55%;
-        max-width: 170px; 
-        /* Increased margin for spacing */
-        margin-bottom: 30px; 
+    /* 3. LAYOUT COMPONENTS */
+    #myVideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+        object-fit: cover;
     }
-    
-    .content-wrapper h1 {
-        font-size: 1.5rem; 
-        margin-top: 0 !important; 
-        /* Increased margin for spacing */
-        margin-bottom: 30px !important; 
-    }
-    
+
     .content-wrapper {
-        /*
-         * 1. Revert to centering
-         */
-        justify-content: center; 
-        
-        /* * 2. Push content down from the center
-         * This value will push the *centered* content block lower on the screen.
-         * Adjust the 100px value to make it higher or lower as needed.
-         */
-        padding-top: 100px; 
-        
-        /* Ensure the top padding doesn't affect the height calculation too much 
-           and that scroll is available if the content pushes past the bottom. */
-        padding-bottom: 50px; 
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        padding: 20px;
     }
-}
 
-body {
-        padding-top: 70px; 
-    }
     .navbar-custom {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 1rem !important;
     }
 
+    /* 4. THE IMAGE (Fixed Proportionally for All Platforms) */
+    #myImage {
+        border: 1px solid #ddd;
+        border-radius: 2px;
+        padding: 5px;
+        background-color: rgba(255, 255, 255, 0.1);
+        
+        /* Fluid width: Min 160px (mobile), Max 400px (Smart Board) */
+        width: clamp(160px, 20vw, 200px);
+        height: auto; /* Maintains aspect ratio */
+        
+        /* Fluid margin: Scales with height of the screen */
+        margin-bottom: clamp(20px, 4vh, 50px);
+        
+        transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+    }
 
-    </style>
+    #myImage:hover {
+        box-shadow: 0 0 10px 2px rgba(0, 140, 186, 0.7);
+        transform: scale(1.02);
+    }
+
+    /* 5. BUTTON STYLING */
+    .button {
+        appearance: none;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        background-color: #ffffffdf;
+        border-radius: 6px;
+        border: 0;
+        color: #000000;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 400;
+        height: 3em;
+        line-height: 3em;
+        padding: 0 2em;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    /* 6. SMART DEVICE SPECIFIC (Phones) */
+    @media (max-width: 600px) {
+        .content-wrapper {
+            padding-top: 100px;
+            justify-content: flex-start; /* Better for scrolling on small screens */
+        }
+
+        #myImage {
+            width: 55%; /* Slightly larger relative to phone screen */
+            margin-bottom: 20px;
+        }
+
+        .content-wrapper h1 {
+            margin-bottom: 15px !important;
+        }
+    }
+
+    /* 7. SMART BOARD & 4K OPTIMIZATION (Ultra-wide/High-res) */
+    @media (min-width: 2000px) {
+        .content-wrapper {
+            gap: 20px; /* Adds consistent spacing between elements */
+        }
+        
+        #myImage {
+            border-width: 3px;
+            padding: 10px;
+        }
+    }
+</style>
 </head>
 
 <body>
@@ -239,5 +221,6 @@ body {
 
 </body>
 </html>
+
 
 
